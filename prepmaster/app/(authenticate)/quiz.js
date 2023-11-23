@@ -41,7 +41,7 @@ const quiz = () => {
   
   const fetchQuestions = async () => {
     try{
-      const response = await axios.get("http://10.0.2.2:3000/questions/paper1");
+      const response = await axios.get("https://prepmaster-cgib.onrender.com/questions/paper1");
       const questionData = response.data.question;
       setQuestion(questionData)
     } catch(error){

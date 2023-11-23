@@ -31,7 +31,7 @@ const login = () => {
             password: password
         }
 
-        axios.post("http://10.0.2.2:3000/login", user).then((response) => {
+        axios.post("https://prepmaster-cgib.onrender.com/login", user).then((response) => {
             console.log(response);
             const token = response.data.token;
             AsyncStorage.setItem("authToken",token);
