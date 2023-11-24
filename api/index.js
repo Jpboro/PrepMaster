@@ -29,7 +29,7 @@ const User = require("./models/user");
 //endpoint to register a user in the backend
 app.post("/register", async(req,res) => {
     try{
-        const {name,email,password,profileImage} = req.body;
+        const {name,email,password} = req.body;
 
         //check if the email is already registered
         const existingUser = await User.findOne({email});
@@ -42,8 +42,7 @@ app.post("/register", async(req,res) => {
         const newUser = new User({
             name,
             email,
-            password,
-            profileImage
+            password
         });
 
         //generate the verification token
@@ -75,7 +74,7 @@ const sendVerificationEmail = async(email,verificationToken) => {
         from:"PrepMaster",
         to:email,
         subject:"Email verification",
-        text:"Please click the following link to verify your email : http://localhost:3000/verify/"+verificationToken,
+        text:"Please click the following link to verify your email : https://prepmaster-cgib.onrender.com/verify/"+verificationToken,
     };
 
     //send the email

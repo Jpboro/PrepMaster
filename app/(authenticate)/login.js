@@ -11,7 +11,6 @@ const login = () => {
     const [password, setPassword] = useState("");
     const router = useRouter();
 
-    /** 
     useEffect(() => {
         const checkLoginStatus = async () => {
             try{
@@ -26,7 +25,6 @@ const login = () => {
         checkLoginStatus();
     }, [])
 
-    */
     const handleLogin = () => {
         const user = {
             email: email,
@@ -45,8 +43,8 @@ const login = () => {
         <SafeAreaView style={{ flex: 1, backgroundColor: "white", alignItems: "center" }}>
             <View>
                 <Image
-                    style={{ width: 200, height: 150, resizeMode: "contain" }}
-                    source={require('../../assets/icon.png')}
+                    style={{ width: 150, height: 100, resizeMode: "contain" }}
+                    source={{ uri: "https://www.freepnglogos.com/uploads/linkedin-logo-transparent-png-25.png", }}
                 />
             </View>
 

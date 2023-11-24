@@ -19,7 +19,6 @@ const userSchema = new mongoose.Schema({
         default:false,
     },
     verificationToken:String,
-    profileImage:String,
 });
 
 const User = mongoose.model("User", userSchema);

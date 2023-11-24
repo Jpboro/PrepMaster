@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import axios from 'axios';
 
@@ -10,14 +11,17 @@ const register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [image, setImage] = useState("");
 
   const router = useRouter();
 
   const handleRegister = () => {
+    console.log("hello")
     const user = {
         name: name,
         email: email,
-        password: password
+        password: password,
+        profileImage: image
     }
 
     axios.post("https://prepmaster-cgib.onrender.com/register",user).then((response) => {
@@ -26,6 +30,7 @@ const register = () => {
         setName("");
         setEmail("");
         setPassword("");
+        setImage("");
     }).catch((error) => {
         Alert.alert("Registration failed","An error occured while registering");
         console.log("Registration failed", error)
@@ -36,8 +41,9 @@ const register = () => {
     <SafeAreaView style={{ flex: 1, backgroundColor: "white", alignItems: "center" }}>
             <View>
                 <Image
-                    style={{ width: 200, height: 150, resizeMode: "contain" }}
-                    source={require('../../assets/icon.png')}
+                    style={{ width: 150, height: 100, resizeMode: "contain" }}
+                    source={{ 
+                        uri: "https://www.freepnglogos.com/uploads/linkedin-logo-transparent-png-25.png", }}
                 />
             </View>
 
@@ -92,7 +98,19 @@ const register = () => {
                         </View>
                     </View>
 
-                    
+                    <View style={{ 
+                        flexDirection: "row", 
+                        alignItems: "center", 
+                        gap: 5, 
+                        backgroundColor: "#E0E0E0", 
+                        paddingVertical: 5, 
+                        borderRadius: 5, 
+                        marginTop: 30 }}>
+                        <Entypo name="image" size={24} color="gray" style={{marginLeft:8}} />
+                        <TextInput value={image} onChangeText={(text) => setImage(text)} 
+                        style={{color:"gray", marginVertical:10, width:300, fontSize:image?18:18,}} 
+                        placeholder='Enter your Image url' />
+                    </View>
 
                     <View style={{marginTop:12, flexDirection:"row", alignItems:"center", justifyContent:"space-between"}}>
                         <Text>Keep me logged in</Text>
